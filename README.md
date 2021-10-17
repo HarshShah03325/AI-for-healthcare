@@ -1,1 +1,3 @@
-# Emotion_Recognition
+# AI-FOR-HEALTHCARE
+
+## MRI segmentation for tumour detection
