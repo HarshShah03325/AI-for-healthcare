@@ -1,7 +1,9 @@
 import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import nibabel as nib
-import keras
+import tensorflow as tf
 from keras import backend as K
 from model import load_model
 from util import visualize_patch
@@ -82,7 +84,7 @@ def get_sub_volume(image, label,
                   start_y: start_y + output_y,
                   start_z: start_z + output_z]
         
-        y = keras.utils.to_categorical(y, num_classes = num_classes)
+        y = tf.keras.utils.to_categorical(y, num_classes = num_classes)
 
         bgrd_ratio = np.sum(y[:,:,:,0]) / (output_x * output_y * output_z)
 
@@ -170,9 +172,9 @@ def visualize_result(X_norm,patch_pred,y):
     '''
     Plots the image with ground truth and predicted image.
     '''
-    print("Patch and ground truth")
-    visualize_patch(X_norm[0, :, :, :], y[2])
-    plt.show()
+    # print("Patch and ground truth")
+    # visualize_patch(X_norm[0, :, :, :], y[2])
+    # plt.show()
     print("Patch and prediction")
     visualize_patch(X_norm[0, :, :, :], patch_pred[0, 2, :, :, :])
     plt.show()

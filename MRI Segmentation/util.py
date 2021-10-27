@@ -1,13 +1,20 @@
 import cv2
 import imageio
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 from IPython.display import Image
 from keras import backend as K
-from keras.utils import to_categorical
+from tensorflow.keras.utils import to_categorical, Sequence
+import h5py
+K.set_image_data_format("channels_last")
 
 
 def plot_image_grid(image):
+    '''
+    Plots the image across 3 planes: coronal, traversal and saggital.
+    '''
     data_all = []
 
     data_all.append(image)
@@ -54,6 +61,9 @@ def plot_image_grid(image):
 
 
 def visualize_data_gif(data_):
+    '''
+    Visualizes the data in gif form using imageio library.
+    '''
     images = []
     for i in range(data_.shape[0]):
         x = data_[min(i, data_.shape[0] - 1), :, :]
@@ -66,6 +76,9 @@ def visualize_data_gif(data_):
 
 
 def visualize_patch(X, y):
+    '''
+    Plots a patch of image and predictions.
+    '''
     fig, ax = plt.subplots(1, 2, figsize=[10, 5], squeeze=False)
 
     ax[0][0].imshow(X[:, :, 0], cmap='Greys_r')
@@ -79,6 +92,9 @@ def visualize_patch(X, y):
 
 
 def get_labeled_image(image, label, is_categorical=False):
+    '''
+    Computes a labeled image(nd.array) for given image and label.
+    '''
     if not is_categorical:
         label = to_categorical(label, num_classes=4).astype(np.uint8)
 
@@ -99,6 +115,9 @@ def get_labeled_image(image, label, is_categorical=False):
 
 
 def predict_and_viz(image, label, model, threshold, loc=(100, 100, 50)):
+    '''
+    Predicts the labels for a given image, compares with the ground truth and plots the image and labels across 3 planes.
+    '''
     image_labeled = get_labeled_image(image.copy(), label.copy())
 
     model_label = np.zeros([3, 320, 320, 160])
@@ -155,3 +174,71 @@ def predict_and_viz(image, label, model, threshold, loc=(100, 100, 50)):
             ax[i][j].set_yticks([])
 
     return model_label_reformatted
+
+
+class VolumeDataGenerator(Sequence):
+    '''
+    Class used to generate data for training and validation.
+    '''
+    def __init__(self,
+                 sample_list,
+                 base_dir,
+                 batch_size=1,
+                 shuffle=True,
+                 dim=(160, 160, 16),
+                 num_channels=4,
+                 num_classes=3,
+                 verbose=1):
+        self.batch_size = batch_size
+        self.shuffle = shuffle
+        self.base_dir = base_dir
+        self.dim = dim
+        self.num_channels = num_channels
+        self.num_classes = num_classes
+        self.verbose = verbose
+        self.sample_list = sample_list
+        self.on_epoch_end()
+
+    def on_epoch_end(self):
+        'Updates indexes after each epoch'
+        self.indexes = np.arange(len(self.sample_list))
+        if self.shuffle == True:
+            np.random.shuffle(self.indexes)
+
+    def __len__(self):
+        'Denotes the number of batches per epoch'
+        return int(np.floor(len(self.sample_list) / self.batch_size))
+
+    def __data_generation(self, list_IDs_temp):
+        'Generates data containing batch_size samples'
+
+        # Initialization
+        X = np.zeros((self.batch_size, *self.dim, self.num_channels),
+                     dtype=np.float64)
+        y = np.zeros((self.batch_size, self.num_classes, *self.dim),
+                     dtype=np.float64)
+
+        # Generate data
+        for i, ID in enumerate(list_IDs_temp):
+            # Store sample
+            if self.verbose == 1:
+                print("Training on: %s" % self.base_dir + ID)
+            with h5py.File(self.base_dir + ID, 'r') as f:
+                x = np.array(f.get("x"))
+                x = np.moveaxis(x,0,3)
+                X[i] = x
+                # remove the background class
+                y[i] = np.moveaxis(np.array(f.get("y")), 3, 0)[1:]
+        return X, y
+
+    def __getitem__(self, index):
+        'Generate one batch of data'
+        # Generate indexes of the batch
+        indexes = self.indexes[
+                  index * self.batch_size: (index + 1) * self.batch_size]
+        # Find list of IDs
+        sample_list_temp = [self.sample_list[k] for k in indexes]
+        # Generate data
+        X, y = self.__data_generation(sample_list_temp)
+
+        return X, y
