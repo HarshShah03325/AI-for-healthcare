@@ -1,5 +1,7 @@
 import random
 import cv2
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 from keras import backend as K
@@ -90,6 +92,7 @@ def compute_gradcam(model, img, image_dir, df, labels, selected_labels,
                        cmap='gray')
             plt.imshow(gradcam, cmap='jet', alpha=min(0.5, predictions[0][i]))
             j += 1
+    plt.show()
 
 
 def get_roc_curve(labels, predicted_vals, generator,plot=False):
