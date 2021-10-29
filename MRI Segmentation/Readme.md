@@ -6,7 +6,7 @@ Neural networks can analyze these images individually (as a radiologist would) o
 At a high level, MRI works by measuring the radio waves emitting by atoms subjected to a magnetic field. 
 We have built a multiclass segmentation model which identifies 3 abnormalities in an image: Edemas, non-enhancing tumors and enhancing tumors.
 <p align="center">
-  <img width="460" height="300" src="assets/mri2.png">
+  <img width="800" height="300" src="assets/mri2.png">
 </p>
 
 ## Technology Stack:
