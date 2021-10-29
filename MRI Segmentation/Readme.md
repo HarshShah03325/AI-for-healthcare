@@ -56,7 +56,7 @@ We have built a multiclass segmentation model which identifies 3 abnormalities i
 - The model outputs probabilities that each pixel is, say, a tumor or not, and we want to be able to backpropagate through those outputs.
 Therefore, we need an analogue of the Dice loss which takes real valued input. This is where the Soft Dice loss comes in. The formula is:
 <p align="center">
-  <img width="460" height="150" src="assets/soft_dice_loss.png">
+  <img width="475" height="175" src="assets/soft_dice_loss.png">
 </p>
 
 ### Sensitivity and Specificity:
