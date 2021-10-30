@@ -5,9 +5,9 @@ Magnetic resonance imaging (MRI) is an advanced imaging technique that is used t
 Neural networks can analyze these images individually (as a radiologist would) or combine them into a single 3D volume to make predictions.
 At a high level, MRI works by measuring the radio waves emitting by atoms subjected to a magnetic field. 
 We have built a multiclass segmentation model which identifies 3 abnormalities in an image: Edemas, non-enhancing tumors and enhancing tumors.
-<p align="center">
-  <img width="800" height="300" src="assets/mri2.png">
-</p>
+
+![](assets/mri2.png)
+
 
 ## Technology Stack:
 - Frameworks: Tensorflow, keras
@@ -29,9 +29,9 @@ We have built a multiclass segmentation model which identifies 3 abnormalities i
   - Red is edema.
   - Blue is enhancing tumor.
   - Green is non enhancing tumor.
-<p align="center">
-  <img width="460" height="300" src="assets/mri.gif">
-</p> 
+
+![](assets/mri.gif)
+
 
 ## 3D U-Net model:
 - The U-Net model implemented here has a depth of 4. This implies that the model will have 4 contracting(analysis) paths and 4 expanding(synthesis) paths.
@@ -39,9 +39,8 @@ We have built a multiclass segmentation model which identifies 3 abnormalities i
 - In the expanding path, each layer consists of an up-convolution of 2×2×2, followed by two 3×3×3 convolutions each followed by a ReLU.
 - Shortcut connections from layers of equal resolution in the analysis path provide the essential high-resolution features to the synthesis path.
 - In the last layer, a 1×1×1 convolution reduces the number of output channels to the number of labels which is 3, followed by a sigmoid activation layer.
-<p align="center">
-  <img width="460" height="300" src="assets/3D_unet.png">
-</p>
+
+![](assets/3D_unet.png)
 
 
 ## Metrics:
