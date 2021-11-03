@@ -1,23 +1,5 @@
 # Chest X-Ray Diagnosis
 
-<!-- ### Exploring the dataset
-- Each image in the data set contains multiple text-mined labels identifying 14 different pathological conditions.These in turn can be used by physicians to diagnose 8 different diseases.
-- We will use this data to develop a single model that will provide binary classification predictions for each of the 14 labeled pathologies.In other words it will predict 'positive' or 'negative' for each of the pathologies.
-- The dataset includes a CSV file that provides the labels for each X-ray.
-  - nih/train-small.csv: 875 images from our dataset to be used for training.
-  - nih/valid-small.csv: 109 images from our dataset to be used for validation.
-  - nih/test.csv: 420 images from our dataset to be used for testing.
-### Data Preprocessing
-- With our dataset splits ready, we can now proceed with setting up our model to consume them.
-For this we will use the off-the-shelf [ImageDataGenerator](https://keras.io/preprocessing/image/) class from the Keras framework, which allows us to build a "generator" for images specified in a dataframe.
-- This class also provides support for basic data augmentation such as random horizontal flipping of images.We also use the generator to transform the values in each batch so that their mean is 0 and their standard deviation is 1. This will facilitate model training by standardizing the input distribution.
-The generator also converts our single channel X-ray images (gray-scale) to a three-channel format by repeating the values in the image across all channels.
-We will want this because the pre-trained model that we'll use requires three-channel inputs.
-
-### Data leakage
-- It is worth noting that our dataset contains multiple images for each patient. This could be the case, for example, when a patient has taken multiple X-ray images at different times during their hospital visits. In our data splitting, we have ensured that the split is done on the patient level so that there is no data "leakage" between the train, validation, and test datasets.
- -->
-
 
 Diagnose 14 pathologies on Chest X-Ray using Deep Learning. Perform diagnostic interpretation using GradCAM Method
 
