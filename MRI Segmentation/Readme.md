@@ -9,11 +9,9 @@ We have built a multiclass segmentation model which identifies 3 abnormalities i
 ![](assets/mri2.png)
 
 
-## Technology Stack:
-- Frameworks: Tensorflow, keras
-- Libraries: Pandas, Nibabel
 
 ## Data preprocessing:
+- In this project, I would be using data from the [Decathlon 10 challenge](https://decathlon-10.grand-challenge.org/)
 - Our dataset is stored in the [NifTI-1 format](https://nifti.nimh.nih.gov/nifti-1/) and we will be using the [NiBabel library](https://github.com/nipy/nibabel) to interact with the files. Each training sample is composed of two separate files:
 - The first file is an image file containing a 4D array of MR image in the shape of (240, 240, 155, 4). The second file in each training example is a label file containing a 3D array with the shape of (240, 240, 155). 
 - The integer values in this array indicate the "label" for each voxel in the corresponding image files:
