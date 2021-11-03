@@ -1,6 +1,6 @@
 # AI-FOR-HEALTHCARE
 
-## MRI segmentation for tumour detection
+## Brain tumor segmentation using MRI
 
 ## Chest X-Ray Analysis 
 
