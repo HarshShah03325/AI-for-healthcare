@@ -36,8 +36,13 @@ several iterations may be performed, hence the name of the class IterativeImpute
 (also referred to as an output, dependent, or response variable).
 - We need to transform our data so that the distributions are closer to standard normal distributions.First we will remove some of the skew from the 
 distribution by using the log transformation. Then we will "standardize" the distribution so that it has a mean of zero and standard deviation of 1.
+
 ![](assets/process.png)
 
+### Adding interactions:
+- One possible way to improve the model is by adding interactions of the features.
+- Interactions means combining two features by multiplying values of each row.
+- I have tried to add all the interactions possible and calculate c_index to draw conclusions.
 
 # Random forest classifier model:
 - Random forests combine predictions from different decision trees to create a robust classifier.
@@ -61,4 +66,23 @@ In data science speak, the reason that the random forest model works so well is:
 - A tie is a permissible pair where the patients have the same risk score.
 ![](assets/risk_model.png)
 
+# Explainations using Shapley values(SHAP):
+- Using a random forest has improved results, but we've lost some of the natural interpretability of trees. In this section we'll try to explain the predictions using slightly more sophisticated techniques.
+- We choose to apply SHAP (SHapley Additive exPlanations), a cutting edge method that explains predictions made by black-box machine learning models (i.e. models which are too complex to be understandable by humans as is).
+- Given a prediction made by a machine learning model, SHAP values explain the prediction by quantifying the additive importance of each feature to the prediction. SHAP values have their roots in cooperative game theory, where Shapley values are used to quantify the contribution of each player to the game.
+- Although it is computationally expensive to compute SHAP values for general black-box models, in the case of trees and forests there exists a fast polynomial-time algorithm. For more details, see the [TreeShap paper.](https://arxiv.org/pdf/1802.03888.pdf)
+
+![](assets/shap1.png)
+The red sections on the left are features which push the model towards the final prediction in the positive direction (i.e. a higher Age increases the predicted risk).
+The blue sections on the right are features that push the model towards the final prediction in the negative direction (if an increase in a feature leads to a lower risk, it will be shown in blue).
+
+![](assets/shap2.png)
+
+Clearly we see that being a woman (sex = 2.0, as opposed to men for which sex = 1.0) has a negative SHAP value, meaning that it reduces the risk of dying within 10 years. High age and high systolic blood pressure have positive SHAP values, and are therefore related to increased mortality.
+You can see how features interact using dependence plots. These plot the SHAP value for a given feature for each data point, and color the points in using the value for another feature. This lets us begin to explain the variation in SHAP value for a single value of the main feature.
+
+![](assets/shap3.png) ![](assets/shap5.png)
+
+- We see that while Age > 50 is generally bad (positive SHAP value), being a woman generally reduces the impact of age. This makes sense since we know that women generally live longer than men.
+- We see that the impact of poverty index drops off quickly, and for higher income individuals age begins to explain much of variation in the impact of poverty index.
 
