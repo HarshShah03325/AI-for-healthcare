@@ -19,17 +19,17 @@ We have built a multiclass segmentation model which identifies 3 abnormalities i
 
 # Data preprocessing:
 - In this project, I would be using data from the [Decathlon 10 challenge](https://decathlon-10.grand-challenge.org/)
-- Our dataset is stored in the [NifTI-1 format](https://nifti.nimh.nih.gov/nifti-1/) and we will be using the [NiBabel library](https://github.com/nipy/nibabel) to interact with the files. Each training sample is composed of two separate files:
+- The dataset is stored in the [NifTI-1 format](https://nifti.nimh.nih.gov/nifti-1/) and we will be using the [NiBabel library](https://github.com/nipy/nibabel) to interact with the files. Each training sample is composed of two separate files:
 - The first file is an image file containing a 4D array of MR image in the shape of (240, 240, 155, 4). The second file in each training example is a label file containing a 3D array with the shape of (240, 240, 155). 
 - The integer values in this array indicate the "label" for each voxel in the corresponding image files:
   - 0: Background. 
   - 1: Edema.
   - 2: Non-enhancing tumor.
   - 3: Enhancing tumor.
-- We are going to first generate "patches" of our data which you can think of as sub-volumes of the whole MR images. 
+- First generate "patches" of our data which you can think of as sub-volumes of the whole MR images. 
 - The reason that we are generating patches is because a network that can process the entire volume at once will simply not fit inside our current environment's memory. Therefore we will be using this common technique to generate spatially consistent sub-volumes of our data, which can be fed into our network.
-- Specifically, we will be generating randomly sampled sub-volumes of shape [160, 160, 16] from our images. 
-- Given that the values in MR images cover a very wide range, we will standardize the values to have a mean of zero and standard deviation of 1.
+- Specifically, I generated randomly sampled sub-volumes of shape [160, 160, 16] from the images.
+- Given that the values in MR images cover a very wide range, standardize the values to have a mean of zero and standard deviation of 1.
 - The color corresponds to each class:
   - Red is edema.
   - Blue is enhancing tumor.
@@ -37,6 +37,13 @@ We have built a multiclass segmentation model which identifies 3 abnormalities i
 
 ![](assets/mri.gif)
 
+# U-Net highlights:
+- U-Net is a convolutional neural network that was developed for biomedical image segmentation at the Computer Science Department of the University of Freiburg The network is based on the fully convolutional network and its architecture was modified and extended to work with fewer training images and to yield more precise segmentations.
+- U-Net was created by Olaf Ronneberger, Philipp Fischer, Thomas Brox in 2015 at the paper [“U-Net: Convolutional Networks for Biomedical Image Segmentation"](https://arxiv.org/pdf/1505.04597.pdf) It's an improvement and development of FCN: Evan Shelhamer, Jonathan Long, Trevor Darrell (2014). ["Fully convolutional networks for semantic segmentation"](https://arxiv.org/pdf/1411.4038.pdf)
+- The architecture contains two paths. First path is the contraction path (also called as the encoder) which is used to capture the context in the image. The encoder is just a traditional stack of convolutional and max pooling layers. The second path is the symmetric expanding path (also called as the decoder) which is used to enable precise localization using transposed convolutions.
+- Thus it is an end-to-end fully convolutional network (FCN), i.e. it only contains Convolutional layers and does not contain any Dense layer because of which it can accept image of any size.
+![](assets/detailed_unet.jpeg)
+Detailed U-Net architectured as described in the paper.
 
 # 3D U-Net model:
 - The U-Net model implemented here has a depth of 4. This implies that the model will have 4 contracting(analysis) paths and 4 expanding(synthesis) paths.
