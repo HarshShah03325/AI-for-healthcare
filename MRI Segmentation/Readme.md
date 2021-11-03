@@ -75,6 +75,8 @@ Recall that in terms of the true positives, true negatives, false positives, and
 ### Whole scan predictions:
 - As of now, our model just runs on patches, but what we really want to see is our model's result on a whole MRI scan. 
 - To do this, generate patches for the scan, then we run the model on the patches and combine the results together to get a fully labeled MR image.
+
+
 ![](assets/predict2.png)
 ![](assets/res2.png)
 
