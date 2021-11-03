@@ -4,7 +4,7 @@
 # Project description:
 - The objetive of this project is to predict the 10-year risk of death of individuals based on 18 different medical factors such as age, gender, systolic blood pressure, BMI etc.
 - Two types of models were used : Linear model and random forest classifier model.
-- Finally, we compare different methods for both models using c_index.
+- Finally, we compare different methods for both models using concordance index(c_index).
 
 # Data exploration:
 - For this project, I will be using the NHANES I epidemiology dataset.
@@ -52,6 +52,13 @@ In data science speak, the reason that the random forest model works so well is:
   - **min_samples_leaf:** the minimum number (if int) or proportion (if float) of samples in a leaf.
 
 # Results:
-
+- Concordance index(c_index) is used to evaluate risk model classifiers.The c-index measures the discriminatory power of a risk score.
+- Intuitively, a higher c-index indicates that the model's prediction is in agreement with the actual outcomes of a pair of patients.
+    The formula for the c-index is:
+![](assets/c_index.png)
+- A permissible pair is a pair of patients who have different outcomes.
+- A concordant pair is a permissible pair in which the patient with the higher risk score also has the worse outcome.
+- A tie is a permissible pair where the patients have the same risk score.
+![](assets/risk_model.png)
 
 
