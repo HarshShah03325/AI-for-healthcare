@@ -27,6 +27,6 @@ There can also be unintended bias in these algorithms that can exacerbate social
 
 ## [Chest X-Ray Analysis](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/Chest%20X-Ray%20Analysis)
 
-## [Risk survival Models](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/Risk%20Models)
+## [Risk prediction Models](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/Risk%20Models)
 
 
