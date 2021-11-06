@@ -23,7 +23,15 @@ There can also be unintended bias in these algorithms that can exacerbate social
 
 ## Following are some ideas that have the potential to improve traditional healthcare systems:
 
-## [Brain tumor segmentation using MRI](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/MRI%20Segmentation)
+# [Brain tumor segmentation using MRI](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/MRI%20Segmentation)
+![](main_assets/heading.png)
+
+## Project description
+- The objective of the project is to use deep learning to diagnose tumor from MRI images.
+- The project uses a 3D U-Net model able to diagnose 4 labels - background, edema, enhancing tumor and non-enhancing tumor.
+- Soft dice loss is used as loss-function to optimize and offset the low performance of other traditonal optimizers due to heavy class imbalance.
+- The predictions are done on patch level for a sub volume of the MRI. Finally, we combine the result of patches to obtain a full MRI scan result.
+
 
 ## [Chest X-Ray Analysis](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/Chest%20X-Ray%20Analysis)
 
