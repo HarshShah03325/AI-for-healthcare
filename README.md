@@ -26,15 +26,29 @@ There can also be unintended bias in these algorithms that can exacerbate social
 # [Brain tumor segmentation using MRI](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/MRI%20Segmentation)
 ![](main_assets/heading.png)
 
-## Project description
+## Description
 - The objective of the project is to use deep learning to diagnose tumor from MRI images.
 - The project uses a 3D U-Net model able to diagnose 4 labels - background, edema, enhancing tumor and non-enhancing tumor.
 - Soft dice loss is used as loss-function to optimize and offset the low performance of other traditonal optimizers due to heavy class imbalance.
 - The predictions are done on patch level for a sub volume of the MRI. Finally, we combine the result of patches to obtain a full MRI scan result.
 
 
-## [Chest X-Ray Analysis](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/Chest%20X-Ray%20Analysis)
+# [Chest X-Ray Analysis](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/Chest%20X-Ray%20Analysis)
+Diagnose 14 pathologies on Chest X-Ray using Deep Learning. Perform diagnostic interpretation using GradCAM Method
 
-## [Risk prediction Models](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/Risk%20Models)
+![](main_assets/xray-header-image.png)
+
+## Description
+- The objective of the project is to use a deep learning model to diagnose pathologies from Chest X-Rays.
+- The project uses a pretrained DenseNet-121 model able to diagnose 14 labels such as Cardiomegaly, Mass, Pneumothorax or Edema. In other words, this single model can provide binary classification predictions for each of the 14 labeled pathologies.
+- Weight normalization is performed to offset the low prevalence of the abnormalities among the dataset of X-Rays (class imbalance).
+- Finally the GradCAM technique is used to highlight and visualize where the model is looking, which area of interest is used to make the prediction. This is a tool which can be helpful for discovery of markers, error analysis, training and even in deployment.
+
+# [Risk prediction Models](https://github.com/HarshShah03325/AI-for-healthcare/tree/main/Risk%20Models)
+
+## Description:
+- The objetive of this project is to predict the 10-year risk of death of individuals based on 18 different medical factors such as age, gender, systolic blood pressure, BMI etc.
+- Two types of models were used : Linear model and random forest classifier model.
+- Finally, I compared different methods for both models using concordance index(c_index).
 
 
