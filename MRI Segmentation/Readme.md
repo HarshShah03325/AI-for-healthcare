@@ -1,5 +1,5 @@
 # Brain tumor segmentation using MRI
-![](heading.png)
+![](../main_assets/heading.png)
 
 # Project description
 - The objective of the project is to use deep learning to diagnose tumor from MRI images.
