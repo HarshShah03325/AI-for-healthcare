@@ -14,7 +14,7 @@
   - [Results](#results)
 - [Chest X-ray analysis](#chest-xray-analysis)
   - [Dataset](#dataset)
-  - [DenseNet highlights](#densetnet-highlights)
+  - [DenseNet highlights](#densenet-highlights)
   - [DenseNet architecture](#densenet-architecture)
   - [Model settings](#model-settings)
   - [Results](#results)
