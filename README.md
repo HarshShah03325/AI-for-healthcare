@@ -3,6 +3,7 @@
 ## Table of contents
 - [AI-for-healthcare](#ai_for_healthcare)
   - [Table of contents](#table-of-contents)
+  - [What is AI-for-healthcare?](#about-the-project)
 - [Challenges before AI-for-healthcare](#challenges)
 - [Brain tumor segmentation using MRI](#mri-segmentation)
   - [Description](#description)
@@ -25,6 +26,8 @@
   - [Random forest classifier model](#random-forest-classifier-model)
   - [Result Predictions](#result-predictions)
   - [Explainations using SHAP](#explainations-using-shap)
+
+## What is AI-for-healthcare?
 
 The importance of Artificial Intelligence in Healthcare is increasing significantly. This project provides the implementation of deep learning and machine learning
 techniques to improve traditional healthcare systems. The primary aim of health-related AI applications is to analyze relationships between prevention or treatment techniques and patient outcomes. The 3 steps of patient management include:
