@@ -39,9 +39,9 @@ class Linear_Model():
         """
         X_train, X_test, y_train, y_test = self.preprocess()
         model_X = lr_model(X_train, y_train)
-        scores = model_X.predict_proba(X_test)[:, 1]
+        scores = model_X.predict(X_test)[:, 1]
         c_index_X_test = cindex(y_test.values, scores)
-        scores2 = model_X.predict_proba(X_train)[:,1]
+        scores2 = model_X.predict(X_train)[:,1]
         c_index_X_train = cindex(y_train.values,scores2)
         return c_index_X_test, c_index_X_train
 

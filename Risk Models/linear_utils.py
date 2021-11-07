@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression, LinearRegression
 
 def generate_data(n=200):
     df = pd.DataFrame(
@@ -69,7 +69,7 @@ def make_standard_normal(df_train, df_test):
 
 def lr_model(X_train, y_train):
     
-    model = LogisticRegression()
+    model = LinearRegression()
     model.fit(X_train, y_train)
     
     return model
