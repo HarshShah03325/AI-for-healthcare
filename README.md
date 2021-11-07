@@ -6,7 +6,7 @@
 - [Challenges before AI-for-healthcare](#challenges)
 - [Brain tumor segmentation using MRI](#mri-segmentation)
   - [Description](#description)
-  - [What is an MRI?](#what-is-an-mri?)
+  - [What is an MRI?](#what-is-an-mri)
   - [Data preprocessing](#data-preprocessing)
   - [U-Net highlights](#u-net-highlights)
   - [3D U-Net model](#3d-u-net-model)
