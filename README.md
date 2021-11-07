@@ -17,13 +17,13 @@
   - [DenseNet highlights](#densenet-highlights)
   - [DenseNet architecture](#densenet-architecture)
   - [Model settings](#model-settings)
-  - [Results](#results)
+  - [Result](#result)
 - [Risk prediction models](#risk-prediction-models)
   - [Data exploration](#data-exploration)
   - [Libraries](#libraries)
   - [Linear model](#linear-model)
   - [Random forest classifier model](#random-forest-classifier-model)
-  - [Results](#results)
+  - [Result Predictions](#result-predictions)
   - [Explainations using SHAP](explainations-using-SHAP)
 
 The importance of Artificial Intelligence in Healthcare is increasing significantly. This project provides the implementation of deep learning and machine learning
@@ -244,7 +244,7 @@ In this project, the model uses 320 x 320 X-Rays images and outputs predictions 
 
 ![](main_assets/xray_assets/predictions.png)
 
-# Results
+# Result
 I used a pre-trained model which performance can be evaluated using the ROC curve shown at the bottom. The best results are achieved for Cardiomegaly (0.9 AUC), Edema (0.86) and Mass (0.82). Ideally we want to be significantly closer to 1. You can check out below the performance from the ChexNeXt paper and their model as well as radiologists on this dataset.
 
 Looking at unseen X-Rays, the model correctly predicts the predominant pathology, generating a somehow accurate diagnotic, highlighting the key region underlying its predictions. In addition to the main diagnostic (highest prediction), the model also predicts secondary issues similarly to what a radiologist would comment as part of his analysis. This can be either false positive from noise captured in the X-rays or cumulated pathologies.
@@ -332,7 +332,7 @@ In data science speak, the reason that the random forest model works so well is:
   - **max_depth:** the maximum depth of each tree.
   - **min_samples_leaf:** the minimum number (if int) or proportion (if float) of samples in a leaf.
 
-# Results:
+# Result Predictions:
 - Concordance index(c_index) is used to evaluate risk model classifiers.The c-index measures the discriminatory power of a risk score.
 - Intuitively, a higher c-index indicates that the model's prediction is in agreement with the actual outcomes of a pair of patients.
     The formula for the c-index is:
