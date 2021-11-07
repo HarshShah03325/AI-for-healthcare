@@ -339,6 +339,7 @@ In data science speak, the reason that the random forest model works so well is:
 - Concordance index(c_index) is used to evaluate risk model classifiers.The c-index measures the discriminatory power of a risk score.
 - Intuitively, a higher c-index indicates that the model's prediction is in agreement with the actual outcomes of a pair of patients.
     The formula for the c-index is:
+    
 ![](main_assets/risk_assets/c_index.png)
 - A permissible pair is a pair of patients who have different outcomes.
 - A concordant pair is a permissible pair in which the patient with the higher risk score also has the worse outcome.
