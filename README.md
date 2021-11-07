@@ -15,6 +15,7 @@
   - [Description](#description)
   - [Dataset](#dataset)
   - [DenseNet highlights](#densetnet highlights)
+  - [DenseNet architecture](#densenet architecture)
   - [Model settings](#model-settings)
   - [Results](#results)
 - [Risk prediction models](#risk-prediction-models)
