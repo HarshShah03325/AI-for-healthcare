@@ -14,7 +14,7 @@
 - [Chest X-ray analysis](#chest-xray-analysis)
   - [Description](#description)
   - [Dataset](#dataset)
-  - [DensetNet highlights](#densetnet highlights)
+  - [DenseNet highlights](#densetnet highlights)
   - [Model settings](#model-settings)
   - [Results](#results)
 - [Risk prediction models](#risk-prediction-models)
