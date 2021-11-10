@@ -4,7 +4,7 @@
 - [AI-for-healthcare](#ai_for_healthcare)
   - [Table of contents](#table-of-contents)
   - [What is AI-for-healthcare?](#what-is-ai-for-healthcare)
-- [Challenges before AI-for-healthcare](#challenges)
+- [Challenges before AI-for-healthcare](#challenges-before-ai-for-healthcare)
 - [Brain tumor segmentation using MRI](#brain-tumor-segmentation-using-mri)
   - [Description](#description)
   - [What is an MRI?](#what-is-an-mri)
